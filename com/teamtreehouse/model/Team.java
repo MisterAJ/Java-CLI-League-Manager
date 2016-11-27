@@ -22,6 +22,10 @@ public class Team implements Comparable<Team>, Serializable {
         System.out.println(print);
     }
 
+    public static void printPlayerList(){
+        System.out.println(mPlayers.keySet());
+    }
+
     public String getTeamName() {
         return mTeamName;
     }

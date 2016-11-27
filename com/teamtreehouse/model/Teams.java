@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Teams {
-    private static Map mTeams = new HashMap<String, Team>();
+    private static Map<String, Team> mTeams = new HashMap<>();
 
     public static String createTeam(String teamName, String coachName){
         Team team = new Team(teamName, coachName);
@@ -14,6 +14,10 @@ public class Teams {
     }
 
     public static void printTeamList(){
-        //TODO Print Values from mTeams map
+        System.out.println(mTeams.keySet());
+    }
+
+    public static Team getTeam(String teamName){
+        return mTeams.get(teamName);
     }
 }

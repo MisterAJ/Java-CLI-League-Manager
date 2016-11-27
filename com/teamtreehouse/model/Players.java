@@ -55,19 +55,14 @@ public class Players {
         }
     }
 
+    public static void listPlayers(){
+        System.out.println(mPlayers.keySet());
+    }
+
     public static Player getPlayer(String playerName){
         Player player = mPlayers.get(playerName);
+        mPlayers.remove(playerName);
         return player;
     }
 
-    public static void removePlayerFromPool(String playerName){
-        for (Player player : playerList){
-            String first = player.getFirstName();
-            String last = player.getLastName();
-            String name = first + " " + last;
-            if (name.equalsIgnoreCase(playerName)){
-                playerList.remove(player);
-            }
-        }
-    }
 }

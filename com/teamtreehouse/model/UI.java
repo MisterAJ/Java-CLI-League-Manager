@@ -31,19 +31,20 @@ public class UI {
         String name = Prompter.prompt("What is the name of the Team?");
         String coach = Prompter.prompt("What is the name of the coach?");
         Teams.createTeam(name, coach);
-        // TODO Create method to print out currently registered teams
+        Teams.printTeamList();
     }
 
     public static void playerMenu(){
-        // TODO Print List of Registered Teams
+        Teams.printTeamList();
         String team = Prompter.prompt("Which team would you like to add to?");
-        // TODO Print List of Unregistered Players
+        Team teamObj = Teams.getTeam(team);
+        Players.listPlayers();
         String playerPrompt = String.format("Which player would you like to add to team %s?", team);
         String player = Prompter.prompt(playerPrompt);
-        // TODO Make method to return Player by Full name
-        // TODO Create method to print player list for selected team
+        teamObj.printPlayerList();
         Player playerObj = Players.getPlayer(player);
-        Team.addPlayer(player,playerObj);
+        teamObj.addPlayer(player,playerObj);
+        // TODO BUG User adding to last Team in the list only
     }
 
 }
