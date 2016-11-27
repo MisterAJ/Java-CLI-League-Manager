@@ -48,15 +48,20 @@ public class UI {
         Teams.printTeamList();
         String team = Prompter.prompt("Which team would you like to add to?");
         Team teamObj = Teams.getTeam(team);
-        while (bool) {
-            Players.listPlayers();
-            String playerPrompt = String.format("Which player would you like to add to team %s? " +
-                    "Please Enter First and Last Name.", team);
-            String player = Prompter.prompt(playerPrompt);
-            teamObj.printPlayerList();
-            Player playerObj = Players.getPlayer(player);
-            teamObj.addPlayer(player, playerObj);
-            bool = Prompter.promptForBoolean("Would you like to add another player to this team? Y/N");
+        if (teamObj.getPlayerCount() < 11) {
+            while (bool) {
+                Players.listPlayers();
+                String playerPrompt = String.format("Which player would you like to add to team %s? " +
+                        "Please Enter First and Last Name.", team);
+                String player = Prompter.prompt(playerPrompt);
+                teamObj.printPlayerList();
+                Player playerObj = Players.getPlayer(player);
+                teamObj.addPlayer(player, playerObj);
+                bool = Prompter.promptForBoolean("Would you like to add another player to this team? Y/N");
+            }
+        }
+        else {
+            System.out.println("Sorry, This team is full.");
         }
     }
 

@@ -78,6 +78,10 @@ public class Team implements Comparable<Team>, Serializable {
         System.out.println(aboveAverage);
     }
 
+    int getPlayerCount(){
+        return mPlayers.size();
+    }
+
     void printExperienceReport(){
         ArrayList<String> hasExperience = new ArrayList<>();
         ArrayList<String> noExperience = new ArrayList<>();

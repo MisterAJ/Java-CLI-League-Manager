@@ -41,7 +41,7 @@ class Teams {
         return mTeams.size();
     }
 
-    static void setmMaxTeams(int mMaxTeams) {
+    static void setMaxTeams(int mMaxTeams) {
         Teams.mMaxTeams = mMaxTeams;
     }
 }

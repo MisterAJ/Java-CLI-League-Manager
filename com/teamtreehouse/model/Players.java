@@ -57,7 +57,7 @@ public class Players implements Comparable {
 
     public static void setMaxTeams(){
         int max = (playerList.length / 5);
-        Teams.setmMaxTeams(max);
+        Teams.setMaxTeams(max);
     }
 
     static void listPlayers(){
