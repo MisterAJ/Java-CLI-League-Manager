@@ -55,14 +55,18 @@ public class Players {
         }
     }
 
-    public static void listPlayers(){
+    static void listPlayers(){
         System.out.println(mPlayers.keySet());
     }
 
-    public static Player getPlayer(String playerName){
+    static Player getPlayer(String playerName){
         Player player = mPlayers.get(playerName);
         mPlayers.remove(playerName);
         return player;
+    }
+
+    static void addPlayer(String name, Player player){
+        mPlayers.put(name,player);
     }
 
 }

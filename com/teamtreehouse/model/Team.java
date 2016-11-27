@@ -7,23 +7,31 @@ import java.util.HashMap;
 public class Team implements Comparable<Team>, Serializable {
     private static final long serialVersionUID = 1L;
 
-    private static String mTeamName;
+    private String mTeamName;
     private String mCoach;
-    private static Map<String, Player> mPlayers = new HashMap<>();
+    private Map<String, Player> mPlayers = new HashMap<>();
 
     Team(String teamName, String coachName) {
         mTeamName = teamName;
         mCoach = coachName;
     }
 
-    public static void addPlayer(String firstAndLast, Player player){
-        mPlayers.put(firstAndLast, player);
-        String print = String.format("%s has been added to team %s", firstAndLast, mTeamName);
+    void addPlayer(String playerName, Player player){
+        mPlayers.put(playerName, player);
+        String print = String.format("%s has been added to team %s", playerName, mTeamName);
         System.out.println(print);
     }
 
-    public static void printPlayerList(){
+    void printPlayerList(){
         System.out.println(mPlayers.keySet());
+    }
+
+    void removePlayer(String playerName){
+        Player player = mPlayers.get(playerName);
+        mPlayers.remove(playerName);
+        Players.addPlayer(playerName, player);
+        String print = String.format("%s has been removed from team %s", playerName, mTeamName);
+        System.out.println(print);
     }
 
     public String getTeamName() {

@@ -18,7 +18,7 @@ public class UI {
                  playerMenu();
              }
              if (menu.equalsIgnoreCase("r")){
-                 // TODO Remove Player Menu
+                 removeMenu();
              }
              if (menu.equalsIgnoreCase("q")){
                  menuBool = false;
@@ -27,14 +27,14 @@ public class UI {
         }
     }
 
-    public static void teamMenu(){
+    private static void teamMenu(){
         String name = Prompter.prompt("What is the name of the Team?");
         String coach = Prompter.prompt("What is the name of the coach?");
         Teams.createTeam(name, coach);
         Teams.printTeamList();
     }
 
-    public static void playerMenu(){
+    private static void playerMenu(){
         Teams.printTeamList();
         String team = Prompter.prompt("Which team would you like to add to?");
         Team teamObj = Teams.getTeam(team);
@@ -45,6 +45,17 @@ public class UI {
         Player playerObj = Players.getPlayer(player);
         teamObj.addPlayer(player,playerObj);
         // TODO BUG User adding to last Team in the list only
+    }
+
+    private static void removeMenu(){
+        Teams.printTeamList();
+        String team = Prompter.prompt("Which team would you like to add to?");
+        Team teamObj = Teams.getTeam(team);
+        teamObj.printPlayerList();
+        String playerPrompt = String.format("Which player would you like to remove from team %s?", team);
+        String player = Prompter.prompt(playerPrompt);
+        teamObj.removePlayer(player);
+
     }
 
 }
