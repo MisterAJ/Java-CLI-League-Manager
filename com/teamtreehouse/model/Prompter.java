@@ -20,7 +20,7 @@ public class Prompter {
             return input;
 	}
 
-	public static boolean promptForBoolean(String promptString){
+	static boolean promptForBoolean(String promptString){
         boolean bool;
         String input;
         System.out.println(promptString);

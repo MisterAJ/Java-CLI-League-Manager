@@ -1,10 +1,10 @@
 package com.teamtreehouse.model;
 
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.Map;
 
-public class Players {
-    private static Map<String,Player> mPlayers = new HashMap<>();
+public class Players implements Comparable {
+    private static Map<String,Player> mPlayers = new TreeMap<>();
     private static Player[] playerList = load();
 
     public static Player[] load() {
@@ -55,8 +55,20 @@ public class Players {
         }
     }
 
+    public static void setMaxTeams(){
+        int max = (playerList.length / 5);
+        Teams.setmMaxTeams(max);
+    }
+
     static void listPlayers(){
-        System.out.println(mPlayers.keySet());
+        for (Player player : mPlayers.values()){
+            String print = String.format("%s %s Height: %s Previous Experience: %s",
+                                            player.getFirstName(),
+                                            player.getLastName(),
+                                            player.getHeightInInches(),
+                                            player.isPreviousExperience());
+            System.out.println(print);
+        }
     }
 
     static Player getPlayer(String playerName){
@@ -69,4 +81,8 @@ public class Players {
         mPlayers.put(name,player);
     }
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 }

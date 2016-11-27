@@ -8,6 +8,7 @@ public class LeagueManager {
         String leagueName = Prompter.prompt("What is the name of your league?");
         Players.load();
         Players.loadListToMap();
+        Players.setMaxTeams();
         UI.mainMenu(leagueName);
         System.out.println("Thank you for using the Team Treehouse Techdegree Soccer League Organizer!");
         System.out.println("#java");
