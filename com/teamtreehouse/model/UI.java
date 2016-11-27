@@ -33,7 +33,7 @@ public class UI {
     }
 
     private static void teamMenu() {
-        if (Teams.getmMaxTeams() > Teams.getTeamCount()) {
+        if (Teams.getMaxTeams() > Teams.getTeamCount()) {
             String name = Prompter.prompt("What is the name of the Team?");
             String coach = Prompter.prompt("What is the name of the coach?");
             Teams.createTeam(name, coach);

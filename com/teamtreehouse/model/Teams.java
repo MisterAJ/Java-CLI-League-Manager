@@ -33,7 +33,7 @@ class Teams {
 
     }
 
-    static int getmMaxTeams() {
+    static int getMaxTeams() {
         return mMaxTeams;
     }
 
