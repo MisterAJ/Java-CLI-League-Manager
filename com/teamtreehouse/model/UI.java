@@ -2,7 +2,7 @@ package com.teamtreehouse.model;
 
 public class UI {
     // Main Menu
-    public void mainMenu(String leagueName){
+    public static void mainMenu(String leagueName){
         String menu;
         Boolean menuBool = true;
         System.out.println("Welcome to the team builder for " + leagueName + "!");
@@ -12,10 +12,10 @@ public class UI {
                                     + "                    (R)emove a Player?\n"
                                     + "                    (Q)uit?");
              if (menu.equalsIgnoreCase("t")){
-                 UI.teamMenu();
+                 teamMenu();
              }
              if (menu.equalsIgnoreCase("p")){
-                 // TODO Player Menu
+                 playerMenu();
              }
              if (menu.equalsIgnoreCase("r")){
                  // TODO Remove Player Menu
@@ -32,6 +32,18 @@ public class UI {
         String coach = Prompter.prompt("What is the name of the coach?");
         Teams.createTeam(name, coach);
         // TODO Create method to print out currently registered teams
+    }
+
+    public static void playerMenu(){
+        // TODO Print List of Registered Teams
+        String team = Prompter.prompt("Which team would you like to add to?");
+        // TODO Print List of Unregistered Players
+        String playerPrompt = String.format("Which player would you like to add to team %s?", team);
+        String player = Prompter.prompt(playerPrompt);
+        // TODO Make method to return Player by Full name
+        // TODO Create method to print player list for selected team
+        Player playerObj = Players.getPlayer(player);
+        Team.addPlayer(player,playerObj);
     }
 
 }

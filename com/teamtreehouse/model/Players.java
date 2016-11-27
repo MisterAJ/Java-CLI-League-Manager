@@ -1,6 +1,11 @@
 package com.teamtreehouse.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Players {
+    private static Map<String,Player> mPlayers = new HashMap<>();
+    private static Player[] playerList = load();
 
     public static Player[] load() {
         return new Player[]{
@@ -41,4 +46,28 @@ public class Players {
 
     }
 
+    public static void loadListToMap(){
+        for (Player player : playerList){
+            String first = player.getFirstName();
+            String last = player.getLastName();
+            String name = first + " " + last;
+            mPlayers.put(name, player);
+        }
+    }
+
+    public static Player getPlayer(String playerName){
+        Player player = mPlayers.get(playerName);
+        return player;
+    }
+
+    public static void removePlayerFromPool(String playerName){
+        for (Player player : playerList){
+            String first = player.getFirstName();
+            String last = player.getLastName();
+            String name = first + " " + last;
+            if (name.equalsIgnoreCase(playerName)){
+                playerList.remove(player);
+            }
+        }
+    }
 }
